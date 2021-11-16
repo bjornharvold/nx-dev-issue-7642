@@ -1,0 +1,240 @@
+{
+  "version": 1,
+  "projects": {
+    "issue7642": {
+      "projectType": "application",
+      "root": "apps/issue7642",
+      "sourceRoot": "apps/issue7642/src",
+      "prefix": "issue7642",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/issue7642",
+            "index": "apps/issue7642/src/index.html",
+            "main": "apps/issue7642/src/main.ts",
+            "polyfills": "apps/issue7642/src/polyfills.ts",
+            "tsConfig": "apps/issue7642/tsconfig.app.json",
+            "assets": [
+              "apps/issue7642/src/favicon.ico",
+              "apps/issue7642/src/assets"
+            ],
+            "styles": [
+              "apps/issue7642/src/styles.scss"
+            ],
+            "scripts": [],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/issue7642/src/environments/environment.ts",
+                  "with": "apps/issue7642/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          },
+          "defaultConfiguration": ""
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "issue7642:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "issue7642:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "issue7642:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/issue7642/src/**/*.ts",
+              "apps/issue7642/src/**/*.html"
+            ]
+          },
+          "outputs": [
+            "{options.outputFile}"
+          ]
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/apps/issue7642"
+          ],
+          "options": {
+            "jestConfig": "apps/issue7642/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
+    "issue7642-e2e": {
+      "root": "apps/issue7642-e2e",
+      "sourceRoot": "apps/issue7642-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/issue7642-e2e/cypress.json",
+            "tsConfig": "apps/issue7642-e2e/tsconfig.e2e.json",
+            "devServerTarget": "issue7642:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "issue7642:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/issue7642-e2e/**/*.{js,ts}"
+            ]
+          },
+          "outputs": [
+            "{options.outputFile}"
+          ]
+        }
+      },
+      "tags": [],
+      "implicitDependencies": [
+        "issue7642"
+      ]
+    },
+    "marketplace-domain": {
+      "projectType": "library",
+      "root": "libs/marketplace/domain",
+      "sourceRoot": "libs/marketplace/domain/src",
+      "prefix": "marketplace",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "outputs": [
+            "dist/libs/marketplace/domain"
+          ],
+          "options": {
+            "project": "libs/marketplace/domain/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/marketplace/domain/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/marketplace/domain/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/marketplace/domain"
+          ],
+          "options": {
+            "jestConfig": "libs/marketplace/domain/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/marketplace/domain/src/**/*.ts",
+              "libs/marketplace/domain/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": [
+        "domain:marketplace",
+        "type:domain-logic"
+      ]
+    },
+    "marketplace-ui-product-page": {
+      "projectType": "library",
+      "root": "libs/marketplace/ui-product-page",
+      "sourceRoot": "libs/marketplace/ui-product-page/src",
+      "prefix": "product-page",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "outputs": [
+            "dist/libs/marketplace/ui-product-page"
+          ],
+          "options": {
+            "project": "libs/marketplace/ui-product-page/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/marketplace/ui-product-page/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/marketplace/ui-product-page/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/marketplace/ui-product-page"
+          ],
+          "options": {
+            "jestConfig": "libs/marketplace/ui-product-page/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/marketplace/ui-product-page/src/**/*.ts",
+              "libs/marketplace/ui-product-page/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": [
+        "domain:marketplace",
+        "type:ui"
+      ]
+    }
+  }
+}
