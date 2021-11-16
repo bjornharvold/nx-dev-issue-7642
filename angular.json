@@ -19,9 +19,7 @@
               "apps/issue7642/src/favicon.ico",
               "apps/issue7642/src/assets"
             ],
-            "styles": [
-              "apps/issue7642/src/styles.scss"
-            ],
+            "styles": ["apps/issue7642/src/styles.scss"],
             "scripts": [],
             "vendorChunk": true,
             "extractLicenses": false,
@@ -86,15 +84,11 @@
               "apps/issue7642/src/**/*.html"
             ]
           },
-          "outputs": [
-            "{options.outputFile}"
-          ]
+          "outputs": ["{options.outputFile}"]
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/apps/issue7642"
-          ],
+          "outputs": ["coverage/apps/issue7642"],
           "options": {
             "jestConfig": "apps/issue7642/jest.config.js",
             "passWithNoTests": true
@@ -124,19 +118,55 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/issue7642-e2e/**/*.{js,ts}"
-            ]
+            "lintFilePatterns": ["apps/issue7642-e2e/**/*.{js,ts}"]
           },
-          "outputs": [
-            "{options.outputFile}"
-          ]
+          "outputs": ["{options.outputFile}"]
         }
       },
       "tags": [],
-      "implicitDependencies": [
-        "issue7642"
-      ]
+      "implicitDependencies": ["issue7642"]
+    },
+    "issue7642-ui-product-page": {
+      "projectType": "library",
+      "root": "libs/issue7642/ui-product-page",
+      "sourceRoot": "libs/issue7642/ui-product-page/src",
+      "prefix": "product-page",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/issue7642/ui-product-page"],
+          "options": {
+            "project": "libs/issue7642/ui-product-page/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/issue7642/ui-product-page/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/issue7642/ui-product-page/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/issue7642/ui-product-page"],
+          "options": {
+            "jestConfig": "libs/issue7642/ui-product-page/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/issue7642/ui-product-page/src/**/*.ts",
+              "libs/issue7642/ui-product-page/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": ["domain:marketplace", "type:ui"]
     },
     "marketplace-domain": {
       "projectType": "library",
@@ -146,9 +176,7 @@
       "architect": {
         "build": {
           "builder": "@nrwl/angular:ng-packagr-lite",
-          "outputs": [
-            "dist/libs/marketplace/domain"
-          ],
+          "outputs": ["dist/libs/marketplace/domain"],
           "options": {
             "project": "libs/marketplace/domain/ng-package.json"
           },
@@ -164,9 +192,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/marketplace/domain"
-          ],
+          "outputs": ["coverage/libs/marketplace/domain"],
           "options": {
             "jestConfig": "libs/marketplace/domain/jest.config.js",
             "passWithNoTests": true
@@ -182,59 +208,7 @@
           }
         }
       },
-      "tags": [
-        "domain:marketplace",
-        "type:domain-logic"
-      ]
-    },
-    "marketplace-ui-product-page": {
-      "projectType": "library",
-      "root": "libs/marketplace/ui-product-page",
-      "sourceRoot": "libs/marketplace/ui-product-page/src",
-      "prefix": "product-page",
-      "architect": {
-        "build": {
-          "builder": "@nrwl/angular:ng-packagr-lite",
-          "outputs": [
-            "dist/libs/marketplace/ui-product-page"
-          ],
-          "options": {
-            "project": "libs/marketplace/ui-product-page/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "libs/marketplace/ui-product-page/tsconfig.lib.prod.json"
-            },
-            "development": {
-              "tsConfig": "libs/marketplace/ui-product-page/tsconfig.lib.json"
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/marketplace/ui-product-page"
-          ],
-          "options": {
-            "jestConfig": "libs/marketplace/ui-product-page/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/marketplace/ui-product-page/src/**/*.ts",
-              "libs/marketplace/ui-product-page/src/**/*.html"
-            ]
-          }
-        }
-      },
-      "tags": [
-        "domain:marketplace",
-        "type:ui"
-      ]
+      "tags": ["domain:marketplace", "type:domain-logic"]
     }
   }
 }

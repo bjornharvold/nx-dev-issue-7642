@@ -15,10 +15,10 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@issue7642/marketplace/domain": ["libs/marketplace/domain/src/index.ts"],
-      "@issue7642/marketplace/ui-product-page": [
-        "libs/marketplace/ui-product-page/src/index.ts"
-      ]
+      "@issue7642/issue7642-ui-product-page": [
+        "libs/issue7642/ui-product-page/src/index.ts"
+      ],
+      "@issue7642/marketplace/domain": ["libs/marketplace/domain/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

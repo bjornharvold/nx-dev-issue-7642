@@ -1,5 +1,5 @@
 {
-  "name": "@issue7642/marketplace/ui-product-page",
+  "name": "@issue7642/issue7642-ui-product-page",
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/common": "^12.2.0",

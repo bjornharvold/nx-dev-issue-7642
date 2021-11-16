@@ -1,5 +1,5 @@
 module.exports = {
-  displayName: 'marketplace-ui-product-page',
+  displayName: 'issue7642-ui-product-page',
   preset: '../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
@@ -8,7 +8,7 @@ module.exports = {
       stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
-  coverageDirectory: '../../../coverage/libs/marketplace/ui-product-page',
+  coverageDirectory: '../../../coverage/libs/issue7642/ui-product-page',
   transform: {
     '^.+\\.(ts|js|html)$': 'jest-preset-angular',
   },
